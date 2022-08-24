@@ -1,41 +1,30 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-    <div>
-        <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-        </a>
-    </div>
-    <HelloWorld msg="Vite + Vue" />
-    <el-row class="mb-4">
-        <el-button>Default</el-button>
-        <el-button type="primary">Primary</el-button>
-        <el-button type="success">Success</el-button>
-        <el-button type="info">Info</el-button>
-        <el-button type="warning">Warning</el-button>
-        <el-button type="danger">Danger</el-button>
-    </el-row>
+    <el-config-provider :size="size" :z-index="zIndex">
+        <el-row class="mb-4">
+            <el-button>Default</el-button>
+            <el-button type="primary">Primary</el-button>
+            <el-button type="success">Success</el-button>
+            <el-button type="info">Info</el-button>
+            <el-button type="warning">Warning</el-button>
+            <el-button type="danger" @click="toggleDark">{{ isDark }}</el-button>
+            <el-switch inline-prompt v-model="theme" @click="toggleDark()">
+            </el-switch>
+        </el-row>
+    </el-config-provider>
 </template>
+<script setup lang="ts">
+import { ElConfigProvider } from 'element-plus'
+import { useDark, useToggle } from '@vueuse/core'
+import { ref } from '@vue/reactivity'
 
+
+const theme = ref(false)
+
+const isDark = useDark()
+const toggleDark: any = useToggle(isDark)
+
+const zIndex: number = 3000;
+const size: any = "small"
+</script>
 <style scoped>
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-}
-
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-    filter: drop-shadow(0 0 2em #42b883aa);
-}
 </style>
