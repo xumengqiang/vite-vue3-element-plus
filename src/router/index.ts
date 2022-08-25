@@ -1,10 +1,18 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-import { pathToCamel } from "@/utils/tool";
-
 import Layout from "@/layout/index.vue";
 
 export const constantRoutes: Array<RouteRecordRaw> = [
+  {
+    path: "/redirect",
+    component: Layout,
+    children: [
+      {
+        path: "/redirect/:path(.*)",
+        component: () => import("@/views/redirect/index.vue"),
+      },
+    ],
+  },
   {
     path: "/login",
     component: () => import("@/views/login/login.vue"),
@@ -16,13 +24,14 @@ export const constantRoutes: Array<RouteRecordRaw> = [
   {
     path: "/",
     component: Layout,
+    redirect: "/home",
     meta: {
       icon: "icon-home",
       title: "系统管理",
     },
     children: [
       {
-        path: "home",
+        path: "/home",
         component: () => import("@/views/home/home.vue"),
         meta: {
           icon: "icon-home",
