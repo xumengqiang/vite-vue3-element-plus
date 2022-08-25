@@ -6,6 +6,8 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -16,6 +18,10 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver({ importStyle: "sass" })],
     }),
+    createSvgIconsPlugin({
+      iconDirs: [path.resolve(__dirname, "src/icons/svg")],
+      symbolId: "icon-[dir]-[name]",
+    }),
   ],
   resolve: {
     alias: {
@@ -25,7 +31,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@use "@/styles/main.scss" as *;', // 按需导入样式
+        additionalData: '@use "@/styles/index.scss" as *;', // 按需导入样式
       },
     },
   },

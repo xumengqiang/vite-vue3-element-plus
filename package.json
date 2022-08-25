@@ -11,8 +11,10 @@
   "dependencies": {
     "@vueuse/core": "^9.1.1",
     "element-plus": "^2.2.14",
+    "pinia": "^2.0.20",
     "sass": "^1.54.5",
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.4"
   },
   "devDependencies": {
     "@types/node": "^18.7.12",
@@ -21,6 +23,7 @@
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.4",
     "vite": "^3.0.7",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^0.39.5"
   }
 }
