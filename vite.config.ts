@@ -28,11 +28,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"), // 设置别名
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: '@use "@/styles/index.scss" as *;', // 按需导入样式
-      },
-    },
-  },
 });

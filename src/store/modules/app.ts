@@ -11,4 +11,18 @@ export const appStore = defineStore("appStore", {
     // 主题
     theme: cache.getTheme(),
   }),
+  actions: {
+    setSidebarOpened() {
+      this.sidebarOpened = !this.sidebarOpened;
+      cache.setSidebarOpened(this.sidebarOpened);
+    },
+    setComponentSize(size: string) {
+      this.componentSize = size;
+      cache.setComponentSize(size);
+    },
+    setTheme(theme: ITheme) {
+      this.theme = theme;
+      cache.setTheme(theme);
+    },
+  },
 });

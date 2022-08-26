@@ -14,7 +14,7 @@ class Cache {
   };
 
   getSidebarOpened = (): boolean => {
-    return Storage.getItem(CacheKey.SidebarOpenedKey) || true;
+    return Storage.getItem(CacheKey.SidebarOpenedKey) ?? true;
   };
 
   setSidebarOpened = (value: boolean) => {
@@ -22,7 +22,7 @@ class Cache {
   };
 
   getComponentSize = (): string => {
-    return Storage.getItem(CacheKey.ComponentSizeKey) || "default";
+    return Storage.getItem(CacheKey.ComponentSizeKey) ?? "default";
   };
 
   setComponentSize = (value: string) => {
@@ -30,7 +30,7 @@ class Cache {
   };
 
   getTheme = (): ITheme => {
-    return (SessionStorage.getItem(CacheKey.ThemeKey) as ITheme) || themeConfig;
+    return (SessionStorage.getItem(CacheKey.ThemeKey) as ITheme) ?? themeConfig;
   };
 
   setTheme = (value: ITheme) => {
