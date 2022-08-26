@@ -1,13 +1,11 @@
 import router from "./router";
 import store from "./store";
+import { RouteRecordRaw } from "vue-router";
 
 // 白名单列表
 const whiteList = ["/login"];
 
 router.beforeEach(async (to, from, next) => {
-  console.log("permiss");
-  console.log(store.userStore.token);
-
   if (store.userStore.token) {
     if (to.path === "/login") {
       next("/home");
@@ -15,7 +13,9 @@ router.beforeEach(async (to, from, next) => {
       if (!store.userStore.user.id) {
         await store.userStore.getUserInfoAction();
         const asyncRoutes = await store.routerStore.getMenuRoutes();
-        router.addRoute(asyncRoutes);
+        asyncRoutes.forEach((route: RouteRecordRaw) => {
+          router.addRoute(route);
+        });
         next({ ...to, replace: true });
       } else {
         next();

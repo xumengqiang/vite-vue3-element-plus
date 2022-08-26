@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { constantRoutes, asyncRoutes } from "@/router";
+import { asyncRoutes } from "@/router";
 import { RouteRecordRaw } from "vue-router";
 
 export const routerStore = defineStore("routerStore", {
@@ -8,8 +8,8 @@ export const routerStore = defineStore("routerStore", {
   }),
   actions: {
     getMenuRoutes() {
-      this.menuRoutes.push(...asyncRoutes);
-      return this.menuRoutes;
+      this.menuRoutes = asyncRoutes;
+      return asyncRoutes;
     },
   },
 });

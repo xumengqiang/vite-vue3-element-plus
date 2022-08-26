@@ -1,6 +1,7 @@
 <template>
     <el-container class="layout-container">
         <Sidebar />
+        <router-view></router-view>
     </el-container>
 </template>
 
