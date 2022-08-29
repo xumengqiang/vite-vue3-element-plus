@@ -43,7 +43,9 @@ const isAffix = (tab: any) => {
 
 watch(route, () => {
     // 当前路由，添加到tabs里
-    addTab()
+    if (route?.meta?.title) {
+        addTab()
+    }
 })
 
 onMounted(() => {

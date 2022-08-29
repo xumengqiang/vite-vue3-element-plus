@@ -20,6 +20,7 @@ router.beforeEach(async (to, from, next) => {
         });
         // 保存路由数据
         store.routerStore.setRoutes(constantRoutes.concat(asyncRoutes));
+
         next({ ...to, replace: true });
       } else {
         next();
