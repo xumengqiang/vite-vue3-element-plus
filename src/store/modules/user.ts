@@ -17,5 +17,9 @@ export const userStore = defineStore("userStore", {
     getUserInfoAction() {
       this.user.id = "1";
     },
+    logoutAction() {
+      // 移除 token
+      cache.setToken("");
+    },
   },
 });

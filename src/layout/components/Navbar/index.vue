@@ -2,43 +2,27 @@
     <div class="navbar-container" :class="headerClass">
         <div class="navbar-left">
             <Hamburger />
-            <!-- <Refresh /> -->
-            <!-- <Breadcrumb v-if="store.appStore.theme.isBreadcrumb" /> -->
+            <Refresh />
+            <Breadcrumb v-if="store.appStore.theme.isBreadcrumb" />
         </div>
-        <!-- <div class="navbar-right">
-			<Lang />
-			<ComponentSize />
-			<a href="https://maku.net" target="_blank">
-				<svg-icon icon="icon-earth"></svg-icon>
-			</a>
-			<a href="https://github.com/makunet/fast-element-admin" target="_blank">
-				<svg-icon icon="icon-github-fill"></svg-icon>
-			</a>
-			<a href="https://gitee.com/makunet/fast-element-admin" target="_blank">
-				<svg-icon icon="icon-gitee-fill-round"></svg-icon>
-			</a>
-
-			<Search />
-			<Notice />
-			<Fullscreen />
-			<User />
-			<Settings />
-		</div> -->
+        <div class="navbar-right">
+            <ComponentSize />
+            <Fullscreen />
+            <User />
+            <Settings />
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import store from '@/store'
 import Hamburger from './components/Hamburger.vue'
-// import Refresh from './components/Refresh.vue'
-// import Breadcrumb from './components/Breadcrumb.vue'
-// import Lang from '@/components/Lang/index.vue'
-// import ComponentSize from './components/ComponentSize.vue'
-// import Fullscreen from './components/Fullscreen.vue'
-// import Search from './components/Search.vue'
-// import Notice from './components/Notice.vue'
-// import User from './components/User.vue'
-// import Settings from '../Settings/index.vue'
+import Refresh from './components/Refresh.vue'
+import Breadcrumb from './components/Breadcrumb.vue'
+import ComponentSize from './components/ComponentSize.vue'
+import Fullscreen from './components/Fullscreen.vue'
+import User from './components/User.vue'
+import Settings from '../Settings/index.vue'
 import { computed } from 'vue'
 
 const headerClass = computed(() => (store.appStore.theme.headerStyle === 'theme' ? 'header-theme' : ''))

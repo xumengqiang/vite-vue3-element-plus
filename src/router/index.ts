@@ -8,7 +8,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     component: Layout,
     children: [
       {
-        path: "/redirect/:path(.*)",
+        path: ":path(.*)",
         component: () => import("@/views/redirect/index.vue"),
       },
     ],
@@ -35,6 +35,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         meta: {
           icon: "icon-home",
           title: "首页",
+          affix: true,
         },
       },
     ],
@@ -42,6 +43,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   {
     path: "/system",
     component: Layout,
+    redirect: "/system/menu",
     meta: {
       icon: "icon-home",
       title: "系统管理",
@@ -92,6 +94,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   {
     path: "/chart",
     component: Layout,
+    redirect: "/chart/AreaStack",
     meta: {
       icon: "icon-home",
       title: "图表",
@@ -126,6 +129,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   {
     path: "/editor",
     component: Layout,
+    redirect: "/editor/WangEditor",
     meta: {
       icon: "icon-home",
       title: "编辑器",
@@ -152,6 +156,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
   {
     path: "/nested",
     component: Layout,
+    redirect: "/nested/menu1",
     meta: {
       icon: "icon-home",
       title: "多级菜单",
@@ -160,6 +165,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       {
         path: "menu1",
         component: () => import("@/views/nested/menu1/index.vue"),
+        redirect: "/nested/menu1/menu1-1",
         meta: {
           icon: "icon-home",
           title: "Menu 1",
@@ -176,6 +182,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
           {
             path: "menu1-2",
             component: () => import("@/views/nested/menu1/menu1-2/index.vue"),
+            redirect: "/nested/menu1/menu1-2/menu1-2-1",
             meta: {
               icon: "icon-home",
               title: "Menu 1-2",
@@ -220,6 +227,13 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         },
       },
     ],
+  },
+  {
+    path: "/:pathMatch(.*)",
+    redirect: "/404",
+    meta: {
+      hidden: true,
+    },
   },
 ];
 
